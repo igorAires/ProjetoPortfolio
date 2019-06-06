@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="description" content="A portfolio of programming and technical projects by JANE DOE" />
+  <link href="css/bootstrap.slate.min.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="css/portfolio.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="fancybox/jquery.fancybox.css" media="screen" rel="stylesheet" type="text/css" />
+  <script type="text/javascript"
+    src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js">
+  </script>
+  <script type="text/javascript" src="js/bootstrap.min.js"> </script>
+  <script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
+  <title>  Programming Portfolio </title>
+</head>
+<body>
+
+<script type="text/javascript">
+
+$(function() {
+  var project_fields = {organization:true, description:true, tools:true, role:true,
+                        dates:true, pictures:true, title:true};
+
+  // Replace every project div with a templatized version
+  $("div[data-tags]").each(function() {
+    var field_objs = {};
+    for(var field in project_fields) {
+      field_objs[field] = $(this).find("." + field).remove();
+    }
+    $(this).attr("class", $("#template").attr("class"));
+    $(this).html($("#template").html()).hide();
+    for(var field in project_fields) {
+      var spot = $(this).find("." + field + "_here");
+      field_objs[field].appendTo(spot);
+    }
+    var title_elt = field_objs["title"].length > 0 ?
+      field_objs["title"] : field_objs["organization"];
+    $(this).find(".title_here").html(title_elt.html());
+  });
+
+  $(".fancybox").fancybox({ closeClick: true });
+  $(".fancybox_iframe").fancybox({
+    closeClick: true,
+    type: 'iframe'
+  });
+
+  $("div[data-tags]:hidden").show();
+});
+</script>
+
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="http://static.angelbob.com/portfolio" class="navbar-brand">Igor Aires - Software Portfolio</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Other Links <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li>
+                  <a href="http://google.com">Resume</a>
+                </li>
+                <li>
+                  <a href="http://google.com">My Blog</a>
+                </li>
+                <li>
+                  <a href="http://google.com">GitHub</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container"><div class="row">
+
+<div style="height:80px;"> </div>
+
+<div id="template" class="panel panel-warning" style="display:none">
+  <div class="panel-heading"><h3><div class="title_here"></div></h3></div>
+  <div class="panel-body">
+    <div class="row well">
+      <div class="col-md-4"><div class="dates_here lead">
+        <b>Dates:</b>
+      </div></div>
+      <div class="col-md-8"><div class="description_here lead">
+        <b>Description:</b>
+      </div></div>
+    </div>
+
+    <div class="row well">
+      <div class="col-md-4"><div class="tools_here lead">
+        <b>Tools:</b>
+      </div></div>
+      <div class="col-md-4"><div class="role_here lead">
+        <b>Role:</b>
+      </div></div>
+      <div class="col-md-4"><div class="organization_here lead">
+        <b>Organization:</b>
+      </div></div>
+    </div>
+
+    <div class="row"><div class="col-md-12">
+      <div class="alert alert-success">
+        <div class="pictures_here lead">
+          <b>Pictures:</b><br/>
+        </div>
+      </div>
+    </div></div>
+  </div>
+</div>
+
+<div data-tags="">
+  <div class="title">Embedded Chip Design for bc752g Ethernet Thingy</div>
+  <div class="dates"> 2014-2015 </div>
+  <div class="organization"> <a href="http://google.com">YoYoDyne</a> </div>
+  <div class="description">
+    I was the head chip designer for the bc752g Ethernet hybrid adapter/popcorn-popper.
+  </div>
+  <div class="tools">
+    SPICE, MS Excel, YoYoChip (internal tool)
+  </div>
+  <div class="role"> Chip Designer </div>
+  <div class="pictures">
+    <a class="fancybox" href="circuit.jpeg">
+      <img src="circuit.jpeg" /> </a>
+    <a class="fancybox" href="yoyodyne.jpg">
+      <img src="yoyodyne.jpg" /> </a>
+  </div>
+</div>
+
+<div data-tags="">
+  <div class="title">Classified Research at NSA</div>
+  <div class="dates"> 2011-2013 </div>
+  <div class="organization"> <a href="http://google.com">NSA</a> </div>
+  <div class="description">
+    The only thing the lawyers say I can tell you is that it's
+    about math.
+  </div>
+  <div class="tools">
+    Mathematics (several internal laws of the universe)
+  </div>
+  <div class="role"> Mathematician </div>
+  <div class="pictures">
+    <a class="fancybox" href="nsa_logo.jpeg">
+      <img src="nsa_logo.jpeg" /> </a>
+    <a class="fancybox" href="math.jpg">
+      <img src="math.jpg" /> </a>
+  </div>
+</div>
+
+<div data-tags="">
+  <div class="title">Business Blog</div>
+  <div class="dates"> 2013-2014 </div>
+  <div class="organization"> <a href="http://onlive.com">OnLive</a> </div>
+  <div class="description">
+    While at OnLive, I coordinated engineering resources to
+    create an engineering blog. I wrote many of the posts
+    and grew it from nothing to over 5 hits a week!
+  </div>
+  <div class="tools">
+    WordPress
+  </div>
+  <div class="role"> Organizer and Author </div>
+  <div class="pictures">
+    <a class="fancybox" href="ol-blog-4.png">
+      <img src="ol-blog-4.png" /> </a>
+    <a class="fancybox" href="ol-blog-5.png">
+      <img src="ol-blog-5.png" /> </a>
+  </div>
+</div>
+
+<div data-tags="">
+  <div class="title">Food Organizer, Soggy Bottom Renaissance Faire</div>
+  <div class="dates"> 2002-2015 </div>
+  <div class="organization"> <a href="http://google.com">Soggy Bottom
+  RenFaire Association</a> </div>
+  <div class="description">
+    Organized central food and vendor registration for Soggy Bottom
+    Ren Faire
+  </div>
+  <div class="role"> Food Organizer </div>
+  <div class="pictures">
+    <a class="fancybox" href="ren_faire_food.jpg">
+      <img src="ren_faire_food.jpg" /> </a>
+    <a class="fancybox" href="ren_faire_1.jpg">
+      <img src="ren_faire_1.jpg" /> </a>
+    <a class="fancybox" href="turkey_leg.jpg">
+      <img src="turkey_leg.jpg" /> </a>
+  </div>
+</div>
+
+
+
+</div>  <!-- Bootstrap Container -->
+
+</body>
